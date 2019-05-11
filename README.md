@@ -16,7 +16,7 @@
 
 ### **Project Description:**
 
-In our project, we aim to reduce human intervention for log file processing by proposing a novel approach that considers logs as regular text (as opposed to related works that exploit the little structure imposed by log formatting). Our methodology makes use of modern algorithms from natural language processing, Kafka and Spark. The resulting pipeline is generic, computationally efficient, and requires minimal intervention. Our approach demonstrates a strong predictive performance (≈ 95% accuracy) using Random forest Classifier.
+In our project, we aim to reduce human intervention for log file analyzing and debugging. Our methodology addresses log mining as a NLP domain problem and makes use of sophisticated techniques from natural language processing to extract key features from the logs. We are applying machine learning Random Forest Classifier to build the model. The log data that is being generated is being processed in real-time through Kafka Spark streaming pipeline. If the anomaly is detected, the system administrators are notifying about the anomalous behavior traced in the log files. Our model demonstrates an accurate predictive performance (93% accuracy).
 
 ### **System Architecture:**
 
@@ -64,33 +64,55 @@ Normalizes the matrix generated from TF-IDF
 
 ### **Model Building:**
 **Dumping Model**
+
 Storing the trained model
 ![image](https://user-images.githubusercontent.com/47070167/57565565-2758a700-7375-11e9-991f-48f016dbf913.png)
 
 
 ### **Data Pipeline:**
+
 **Kafka Logs**
 
-
+Sending the kafka logs through the producer
 ![image](https://user-images.githubusercontent.com/47070167/57565902-908ee900-737a-11e9-8d58-2343fba31175.png)
 
+**Processing**
+
+The new data is sent through the Kafka producer in chunks which is received by Spark streaming object in real time. On this object, the pre-processing is performed and given to the pre-trained model which computes the label of the log. If anomaly is found, then the whole data associated with it is sent to the system administrator through e-mail.
+
+![image](https://user-images.githubusercontent.com/47070167/57566970-6859b700-7387-11e9-9c7d-96de39dafe1e.png)
+
+
 **Output:**
+
 ![image](https://user-images.githubusercontent.com/47070167/57566127-c7b2c980-737d-11e9-86ed-0b1e935b19a4.png)
 
+### **Future Enhancement:**
+
+- Classifying the anomalies on the basis of severity such as Critical, High, Moderate, Low.
+- Alerting the different user groups according to it's criticality.
+ 
 
 ### **How to use this:**
 
 - Start Zookeeper
-   zkserver
+  Open a new terminal and type zkserver
+
 - Start Kafka Server
+   Open a new terminal and type
   .\bin\windows\kafka-server-start.bat .\config\server.properties 
+
 - Create a Kafka topic
+  Open a new terminal and type
   kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
 - Initialize a local producer 
+  Open a new terminal and initialize a producer
   kafka-console-producer.bat --broker-list localhost:9092 --topic test \--new-producer < HDFS.log
 
 - Spark 
   ./spark-submit.sh '--jars spark-streaming-kafka-0-8-assembly_2.11-2.3.3.jar pyspark-shell Spark_Log_mining.py
+
 
 
 
