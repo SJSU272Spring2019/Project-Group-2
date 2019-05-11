@@ -29,36 +29,49 @@ The log data is transferred through Kafka producer which is received as a Spark 
 ### **Data Preprocessing:**
 
 **Raw Data**
+
 Log data generated through HDFS 
+
 ![image](https://user-images.githubusercontent.com/47070167/57565520-5884a780-7374-11e9-9dfe-9dd4e631451f.png)
 
 
 **Log DataFrame**
+
 Unstructured logs preprocessed into dataframe
+
 ![image](https://user-images.githubusercontent.com/47070167/57565523-74884900-7374-11e9-8311-9aaaf5b3e4f7.png)
 
 
 **Event Sequence**
+
 BlockID having different events 
+
 ![image](https://user-images.githubusercontent.com/47070167/57565521-6a664a80-7374-11e9-8b18-ea7ab5d0cd22.png)
 
 
 **Label Dictionary**
+
 Dictionary of blockIDs and event sequences
+
 ![image](https://user-images.githubusercontent.com/47070167/57565539-aef1e600-7374-11e9-9a77-cb7cd0b8c5a2.png)
 
 
 **Label Mapping**
+
 Mapping blockIDs with associated label i.e. Anomaly or Normal
+
 ![image](https://user-images.githubusercontent.com/47070167/57565534-a00b3380-7374-11e9-8da2-51ae87e11721.png)
 
 ### **Natural Language Processing:**
 **TF-IDF**
 Building matrix by converting event sequences into TF-IDF form
+
 ![image](https://user-images.githubusercontent.com/47070167/57565552-ed87a080-7374-11e9-92ae-eb77ee142aa4.png)
 
 **Normalized Vector**
+
 Normalizes the matrix generated from TF-IDF
+
 ![image](https://user-images.githubusercontent.com/47070167/57565561-0f812300-7375-11e9-8023-1360253fa09c.png)
 
 
@@ -66,6 +79,7 @@ Normalizes the matrix generated from TF-IDF
 **Dumping Model**
 
 Storing the trained model
+
 ![image](https://user-images.githubusercontent.com/47070167/57565565-2758a700-7375-11e9-991f-48f016dbf913.png)
 
 
