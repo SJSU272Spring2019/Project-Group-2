@@ -13,10 +13,9 @@
 - Shravani Pande
 
 
-
 ### **Project Description:**
 
-In our project, we aim to reduce human intervention for log file analyzing and debugging. Our methodology addresses log mining as a NLP domain problem and makes use of sophisticated techniques from natural language processing to extract key features from the logs. We are applying machine learning Random Forest Classifier to build the model. The log data that is being generated is being processed in real-time through Kafka Spark streaming pipeline. If the anomaly is detected, the system administrators are notifying about the anomalous behavior traced in the log files. Our model demonstrates an accurate predictive performance (93% accuracy).
+In our project, we aim to reduce human intervention for log file analyzing and debugging. Our methodology addresses log mining as a NLP domain problem and makes use of sophisticated techniques from natural language processing to extract key features from the logs. We are applying machine learning Random Forest Classifier to build the model. The log data that is being generated is being processed in real-time through Kafka Spark streaming pipeline. If the anomaly is detected, the system administrators are notifying about the anomalous behavior traced in the log files. Our model demonstrates an accurate predictive performance (F1-Score 93%).
 
 ### **System Architecture:**
 
